@@ -20,9 +20,6 @@ Route::get('/users',function(){
 });
 
 
-
-
-
 use Hyn\Tenancy\Models\Website;
 use Hyn\Tenancy\Contracts\Repositories\WebsiteRepository;
 use Hyn\Tenancy\Models\Hostname;
