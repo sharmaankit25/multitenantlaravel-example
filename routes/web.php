@@ -31,20 +31,17 @@ use Hyn\Tenancy\Contracts\Repositories\HostnameRepository;
 Route::domain('tenant-a.dev.com')->group(function () {
     // .. your landing page routes
 
-    // Create Website
-    Route::get('/create-website',function(){
+    Route::get('/create-tenant',function(){
+        // Create Website
         $website = new Website;
         app(WebsiteRepository::class)->create($website);
-        dd($website->uuid);
-    });
-
-    // Create and connect hostnames
-    Route::get('/create-connect-hostnames',function(){
+        // Create Hostname
         $hostname = new Hostname;
-        $hostname->fqdn = 'tenant-b.dev';
+        $hostname->fqdn = 'tenant-c.dev';
         $hostname = app(HostnameRepository::class)->create($hostname);
+        // Attach website to host
         app(HostnameRepository::class)->attach($hostname, $website);
-        dd($website->hostnames); // Collection with $hostname
+        dd('Created Tenant : ',$website->hostnames,$website->uuid);
     });
 });
 
