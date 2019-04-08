@@ -164,7 +164,7 @@ return [
          * This will resolve issues with password reset mails etc using the
          * correct domain.
          */
-        'update-app-url' => false,
+        'update-app-url' => true,
     ],
     'db' => [
         /**
@@ -299,7 +299,7 @@ return [
            App\Models\User::class
         ],
         'force-system-connection-of-models' => [
-        //    App\Models\User::class
+        //    App\User::class
         ],
     ],
 

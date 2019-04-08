@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+    <todos></todos>
     <a class="btn btn-success" href="{{ route('todos.create') }}">Create</a>
     <div class="row justify-content-center">
         <div class="col-md-8">

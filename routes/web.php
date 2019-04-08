@@ -39,11 +39,17 @@ Route::domain('tenant-a.dev.com')->group(function () {
         app(HostnameRepository::class)->attach($hostname, $website);
         dd('Created Tenant : ',$website->hostnames,$website->uuid);
     });
+    // Route::group(['middleware' => 'auth'], function () {
+
+
+    // });
+
 });
 
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('todos', 'TodoController');
+    Route::view('passports','passport');
 });
 
 
