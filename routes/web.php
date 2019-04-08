@@ -19,7 +19,6 @@ Route::get('/users',function(){
     return App\Models\User::all();
 });
 
-
 use Hyn\Tenancy\Models\Website;
 use Hyn\Tenancy\Contracts\Repositories\WebsiteRepository;
 use Hyn\Tenancy\Models\Hostname;
@@ -43,6 +42,9 @@ Route::domain('tenant-a.dev.com')->group(function () {
 });
 
 
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('todos', 'TodoController');
+});
 
 
 Auth::routes();
