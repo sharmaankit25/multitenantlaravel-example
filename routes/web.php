@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/users',function(){
     return App\Models\User::all();
@@ -27,23 +24,28 @@ use Hyn\Tenancy\Contracts\Repositories\HostnameRepository;
 Route::domain('tenant-a.dev.com')->group(function () {
     // .. your landing page routes
 
+    Route::get('/',function(){
+        return \App\Models\System\Website::all();
+    });
+
     Route::get('/create-tenant',function(){
         // Create Website
         $website = new Website;
         app(WebsiteRepository::class)->create($website);
         // Create Hostname
         $hostname = new Hostname;
-        $hostname->fqdn = 'tenant-c.dev';
+        $hostname->fqdn = 'tenant-e.dev';
         $hostname = app(HostnameRepository::class)->create($hostname);
         // Attach website to host
         app(HostnameRepository::class)->attach($hostname, $website);
         dd('Created Tenant : ',$website->hostnames,$website->uuid);
     });
-    // Route::group(['middleware' => 'auth'], function () {
 
 
-    // });
+});
 
+Route::get('/', function () {
+    return view('welcome');
 });
 
 

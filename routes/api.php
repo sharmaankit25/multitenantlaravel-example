@@ -16,12 +16,14 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
+
+    Route::get('/todos',function(Request $request){
+        return $request->user()->todos;
+    });
 });
 
 
-Route::get('/todos',function(){
-    return \App\Models\Todo::get();
-});
+
 
 Route::post('oauth/token', '\Laravel\Passport\Http\Controllers\AccessTokenController@issueToken');
 

@@ -42,7 +42,6 @@ class Kernel extends HttpKernel
         'api' => [
             'throttle:60,1',
             'bindings',
-            'tenancy.enforce'
         ],
     ];
 
@@ -64,7 +63,7 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'tenancy.enforce' => \App\Http\Middleware\EnforceTenancy::class,
+        // 'tenancy.enforce' => \App\Http\Middleware\EnforceTenancy::class,
     ];
 
     /**

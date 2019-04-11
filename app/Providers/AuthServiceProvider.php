@@ -26,7 +26,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Passport::routes(null, ['middleware' => 'tenancy.enforce']);
+        Passport::routes();
 
         $this->commands([
             \Laravel\Passport\Console\InstallCommand::class,
