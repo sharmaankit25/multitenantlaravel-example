@@ -23,7 +23,5 @@ Route::group(['middleware' => 'auth:api'], function () {
 });
 
 
-
-
 Route::post('oauth/token', '\Laravel\Passport\Http\Controllers\AccessTokenController@issueToken');
 
